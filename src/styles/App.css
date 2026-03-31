@@ -20,3 +20,10 @@ html, body, #root {
 main {
   padding-top: 1rem;
 }
+
+.box{
+  width: 200px;
+  background: #ffffff;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
