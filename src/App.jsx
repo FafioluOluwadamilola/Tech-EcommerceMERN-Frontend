@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Footer from './components/Footer'
+import ProductCard from './components/ProductCard'
 
 
 function App() {

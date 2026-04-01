@@ -1,13 +1,17 @@
 import React from 'react'
 import { ArrowRight, Shield, Truck, Zap } from "lucide-react"
+import ProductCard from './ProductCard'
 
 
 const Hero = () => {
   return (
     <div className='w-full bg-white'>
 
+
+
+      {/* Section 1 */}
       <div className='flex flex-col justify-center items-center h-125 bg-[#F5F6FF] p-4'>
-        
+
         <h1 className='text-[70px] font-bold text-gray-800 mb-4'>Welcome to TechStore</h1>
 
         <p className='text-lg text-gray-600 max-w-md text-center'>
@@ -21,7 +25,10 @@ const Hero = () => {
       </div>
 
 
-      <div className='flex justify-evenly h-70 gap-10 p-8 border-b border-white/20 shadow-lg'>
+
+
+      {/* Section 2 */}
+      <div className='flex justify-evenly h-70 gap-1 p-8 border-b border-white/20 shadow-lg'>
 
         <div className='flex flex-col items-center justify-center gap-2'>
           <div className='bg-blue-100 p-4 rounded-full text-blue-600'><Zap /></div>
@@ -44,6 +51,8 @@ const Hero = () => {
       </div>
 
 
+
+      {/* Category Section */}
       <div className='bg-[#F7F7F9] h-auto flex flex-col justify-center items-center p-10'>
 
         <h1 className='font-bold text-3xl'>Shop by Category</h1>
@@ -58,12 +67,20 @@ const Hero = () => {
 
       </div>
 
-      <div className='h-200 m-5'>
-          <div className='flex justify-between'>
-            <h1 className='font-bold text-3xl'>Featured Products</h1>
-            <p className='flex gap-2 cursor-pointer'>View All <ArrowRight /></p>
-          </div>
-      </div>
+
+      {/* products section */}
+      <section className="max-w-7xl mx-auto mt-20 w-full">
+        <div className='flex justify-between'>
+          <h2 className="text-2xl font-bold text-center mb-8">
+            Featured Products
+          </h2>
+
+          <p className='flex gap-1'>View All <ArrowRight /></p>
+        </div>
+
+        <ProductCard />
+
+      </section>
 
     </div>
   )
