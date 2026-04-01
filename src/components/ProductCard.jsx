@@ -30,7 +30,7 @@ const ProductCard = () => {
               </div>
 
               <p className='text-gray-600 cursor-pointer'>{product.description}</p>
-              <p className='mt-2'>⭐{product.ratings} ({Math.floor(Math.random() * 100)}) </p>
+              <p className='mt-2'>⭐{product.ratings} ({product.reviews}) </p>
             </div>
 
             <div className='flex justify-between items-center p-3 '>
