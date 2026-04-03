@@ -1,8 +1,9 @@
 import './styles/App.css'
 import SignUp from './pages/SignUp'
+import Login from './pages/Login'
 import About from './pages/About'
+import HomePage from './pages/HomePage'
 import Header from './components/Header'  
-import Hero from './components/Hero'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Footer from './components/Footer'
 import ProductCard from './components/ProductCard'
@@ -15,11 +16,11 @@ function App() {
 
     <Header />
 
-    <Hero />
-
      <Routes>
+        <Route path="/" element={<HomePage />} />
        <Route path="/signup" element={<SignUp />} />
-       <Route path='/about' element={<About />} />
+       <Route path='/login' element={<Login />} />
+       <Route path='/about' element={<About />} />  
      </Routes>
 
     <Footer />

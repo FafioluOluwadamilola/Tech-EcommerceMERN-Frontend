@@ -27,3 +27,8 @@ main {
   border: 2px solid #ccc;
   cursor: pointer;
 }
+
+.reg{
+  display: flex;
+  flex-direction: column;
+}
