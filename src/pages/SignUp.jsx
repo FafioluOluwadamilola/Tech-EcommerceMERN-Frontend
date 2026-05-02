@@ -1,7 +1,8 @@
 import { X } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import React from 'react'
 
-const SignUp = ({ close }) => {
+const SignUp = ({ close, openLogin }) => {
   return (
     <div className='h-screen fixed inset-0 z-50 bg-black/60 flex justify-center items-center' onClick={close}>
 
@@ -44,7 +45,7 @@ const SignUp = ({ close }) => {
 
             <div className='p-5 text-center'>
               <p>Already have an account? 
-                <a href='/login' className='font-bold hover:underline'>Log in</a>
+                <span onClick={() => openLogin()} className='font-bold hover:underline cursor-pointer'>Log in</span>
               </p>
             </div>
 
