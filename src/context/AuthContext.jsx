@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   // 🔹 This holds the current user
   // null = not logged in
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // 🔹 This runs ONCE when app loads
   useEffect(() => {
@@ -15,11 +16,14 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem("token");
 
       // 🔹 If no token → user is not logged in
-      if (!token) return;
+      if (!token) {
+        setLoading(false);
+        return;
+      };
 
       try {
         // 🔹 Ask backend: "who is this user?"
-        const res = await fetch("/api/auth/profile", {
+        const res = await fetch("http://localhost:5000/api/auth/profile", {
           headers: {
             Authorization: `Bearer ${token}` // 🔐 send token
           }
@@ -39,6 +43,9 @@ export const AuthProvider = ({ children }) => {
         // 🔹 If token is bad → clean it up
         localStorage.removeItem("token");
       }
+      finally{
+        setLoading(false);
+      }
     };
 
     loadUser(); // 🔁 run function
@@ -46,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     // 🔹 Makes user + setUser available everywhere
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, loading }}>
       {children}
     </AuthContext.Provider>
   );

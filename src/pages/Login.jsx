@@ -1,12 +1,15 @@
 import { X } from "lucide-react"
 import { useAuth } from "../context/AuthContext"
 import { useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = ({ close, openSignUp }) => {
   
   const { setUser } = useAuth();
 
   // 🔹 Store input values
+  const location = useLocation();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -39,7 +42,9 @@ const Login = ({ close, openSignUp }) => {
         email: data.email
       });
 
-      close(); // close modal
+      const from = location.state?.from?.pathname || "/";
+      navigate(from, { replace: true });
+      close();
 
     } catch (error) {
       console.error("Login error:", error.message);
