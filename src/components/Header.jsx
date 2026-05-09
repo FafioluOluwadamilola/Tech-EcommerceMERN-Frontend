@@ -1,21 +1,31 @@
-import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ShoppingCart, User } from 'lucide-react'
 import SignUp from '../pages/SignUp'
 import Login from '../pages/Login'
 import { useAuth } from '../context/AuthContext' // ✅ NEW
+import { useCart } from '../context/CartContext'
+import { useUI } from '../context/UIContext'
 
 const Header = () => {
 
-    const [showLogin, setShowLogin] = useState(false)
-    const [showSignUp, setShowSignUp] = useState(false)
+    const { 
+        showLogin, 
+        setShowLogin, 
+        showSignUp, 
+        setShowSignUp 
+    } = useUI() // ✅ NEW
 
     const { user, setUser } = useAuth() // ✅ NEW
 
     const handleLogout = () => {
         localStorage.removeItem("token")
         setUser(null)
+        setCart([]) // Clear cart on logout
     }
+
+    const { cart, setCart } = useCart() // ✅ NEW
+
+    const totalItems = cart.reduce((total, item) => total + item.qty, 0);
 
     return (
 
@@ -96,8 +106,15 @@ const Header = () => {
                     />
                 )}
 
-                <Link>
+                <Link className='relative'>
                     <ShoppingCart size={25} className='text-gray-800' />
+
+                    {totalItems > 0 && (
+                        <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center'>
+                            {totalItems}
+                        </span>
+                    )}
+
                 </Link>
 
             </div>

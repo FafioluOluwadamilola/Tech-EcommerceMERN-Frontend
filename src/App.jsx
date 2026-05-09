@@ -9,33 +9,39 @@ import Footer from './components/Footer'
 import ProductCard from './components/ProductCard'
 import ProtectedRoute from './components/ProtectedRoute'
 import Profile from './pages/Profile'
+import { CartProvider } from './context/CartContext'
+import { UIProvider } from './context/UIContext'
 
 
 function App() {
 
   return (
-    <BrowserRouter>
-
-      <Header />
-
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        {/* <Route path="/signup" element={<SignUp />} />
-        <Route path='/login' element={<Login />} /> */}
-        <Route path='/about' element={<About />} />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-
-      <Footer />
-
-    </BrowserRouter>
+    <UIProvider>
+      <CartProvider>
+        <BrowserRouter>
+    
+          <Header />
+    
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            {/* <Route path="/signup" element={<SignUp />} />
+            <Route path='/login' element={<Login />} /> */}
+            <Route path='/about' element={<About />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+    
+          <Footer />
+    
+        </BrowserRouter>
+      </CartProvider>
+    </UIProvider>
   )
 }
 
