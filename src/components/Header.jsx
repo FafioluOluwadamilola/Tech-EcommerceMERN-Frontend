@@ -106,7 +106,7 @@ const Header = () => {
                     />
                 )}
 
-                <Link className='relative'>
+                <Link to="/cart" className='relative'>
                     <ShoppingCart size={25} className='text-gray-800' />
 
                     {totalItems > 0 && (

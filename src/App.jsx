@@ -11,6 +11,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Profile from './pages/Profile'
 import { CartProvider } from './context/CartContext'
 import { UIProvider } from './context/UIContext'
+import Cart from './pages/Cart'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
     
           <Footer />

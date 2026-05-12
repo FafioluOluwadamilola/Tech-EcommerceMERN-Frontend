@@ -49,6 +49,31 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  //Increase quantity
+  const increaseQty = (id) => {
+    const updatedCart = cart.map((item) =>
+      item.id === id ? { ...item, qty: item.qty + 1 } : item
+    )
+    setCart(updatedCart);
+  }
+
+
+  //Decrease quantity
+  const decreaseQty = (id) => {
+
+    const existingItem = cart.find((item) => item.id === id);
+
+    //If quantity is 0 remove item from cart
+    if (existingItem.qty === 1) {
+      removeFromCart(id);
+    } else {
+      const updatedCart = cart.map((item) =>
+        item.id === id ? { ...item, qty: item.qty - 1 } : item
+      )
+      setCart(updatedCart);
+    }
+  }
+
   // ❌ Remove item
   const removeFromCart = (id) => {
     const updatedCart = cart.filter(
@@ -70,7 +95,9 @@ export const CartProvider = ({ children }) => {
         setCart,
         addToCart,
         removeFromCart,
-        clearCart
+        clearCart,
+        increaseQty,
+        decreaseQty
       }}
     >
       {children}
