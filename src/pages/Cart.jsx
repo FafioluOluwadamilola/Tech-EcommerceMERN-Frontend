@@ -1,5 +1,6 @@
 import React from 'react'
 import { useCart } from '../context/CartContext';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
@@ -106,10 +107,16 @@ const Cart = () => {
                     {/* Clear Cart */}
                     <button
                         onClick={clearCart}
-                        className='bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800'
+                        className='bg-black text-white px-6 py-3 rounded-xl hover:bg-red-800'
                     >
                         Clear Cart
                     </button>
+
+                    <Link 
+                        to="/checkout" 
+                        className='bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 text-center'>
+                        Proceed to Checkout
+                    </Link>
 
                 </div>
             )}

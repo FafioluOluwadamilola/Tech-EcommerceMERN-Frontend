@@ -1,27 +1,24 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useUI } from "../context/UIContext";
 
 const ProtectedRoute = ({ children }) => {
-  const { user, loading } = useAuth();
-  const location = useLocation();
 
-    // 🔹 Still checking auth status
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+  const { user } = useAuth();
 
-  // ❌ Not logged in → redirect
+  const { setShowLogin } = useUI();
+
+  // ❌ Not logged in
   if (!user) {
-    return (
-        <Navigate 
-            to="/" 
-            state={{ from: location }}
-            replace 
-        />
-    );
+
+    // 🔥 Open login modal
+    setShowLogin(true);
+
+    // 🔥 Redirect home
+    return <Navigate to="/" replace />;
   }
 
-  // ✅ Logged in → allow access
+  // ✅ Logged in
   return children;
 };
 

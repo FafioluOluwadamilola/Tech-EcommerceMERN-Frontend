@@ -12,6 +12,7 @@ import Profile from './pages/Profile'
 import { CartProvider } from './context/CartContext'
 import { UIProvider } from './context/UIContext'
 import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 
 
 function App() {
@@ -37,6 +38,14 @@ function App() {
               }
             />
             <Route path="/cart" element={<Cart />} />
+            <Route 
+              path="/checkout" 
+              element={
+                <ProtectedRoute>
+                  <Checkout />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
     
           <Footer />
