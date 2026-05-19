@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useAuth } from "./AuthContext";
 
 const CartContext = createContext();
 
@@ -7,6 +8,8 @@ export const CartProvider = ({ children }) => {
   // 🛒 Cart array
   const [cart, setCart] = useState([]);
 
+  const { user } = useAuth();
+
 
 
   // 💾 Save cart whenever it changes
@@ -14,15 +17,16 @@ export const CartProvider = ({ children }) => {
 
     const fetchCart = async () => {
 
-      // 🔐 Get saved token
       const token = localStorage.getItem("token");
 
-      // ❌ No token = guest user
-      if (!token) return;
+      // ❌ No logged in user
+      if (!token || !user) {
+        setCart([]);
+        return;
+      }
 
       try {
 
-        // 📡 Request user's cart
         const res = await fetch(
           "http://localhost:5000/api/cart",
           {
@@ -38,17 +42,18 @@ export const CartProvider = ({ children }) => {
           throw new Error(data.message);
         }
 
-        // 🛒 Save backend cart into React state
         setCart(data.items);
 
       } catch (error) {
+
         console.error(error.message);
+
       }
     };
 
     fetchCart();
 
-  }, []);
+  }, [user]);
 
 
 
@@ -109,37 +114,37 @@ export const CartProvider = ({ children }) => {
 
 
   //Decrease quantity
-const decreaseQty = async (productId) => {
+  const decreaseQty = async (productId) => {
 
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  try {
+    try {
 
-    const res = await fetch(
-      `http://localhost:5000/api/cart/decrease/${productId}`,
-      {
-        method: "PATCH",
+      const res = await fetch(
+        `http://localhost:5000/api/cart/decrease/${productId}`,
+        {
+          method: "PATCH",
 
-        headers: {
-          Authorization: `Bearer ${token}`
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message);
       }
-    );
 
-    const data = await res.json();
+      setCart(data.items);
 
-    if (!res.ok) {
-      throw new Error(data.message);
+    } catch (error) {
+
+      console.error(error.message);
+
     }
-
-    setCart(data.items);
-
-  } catch (error) {
-
-    console.error(error.message);
-
-  }
-};
+  };
 
 
 
@@ -182,38 +187,38 @@ const decreaseQty = async (productId) => {
 
 
   // 🧹 Clear entire cart
-const clearCart = async () => {
+  const clearCart = async () => {
 
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  try {
+    try {
 
-    const res = await fetch(
-      "http://localhost:5000/api/cart/clear",
-      {
-        method: "DELETE",
+      const res = await fetch(
+        "http://localhost:5000/api/cart/clear",
+        {
+          method: "DELETE",
 
-        headers: {
-          Authorization: `Bearer ${token}`
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message);
       }
-    );
 
-    const data = await res.json();
+      // 🔥 sync frontend with backend
+      setCart(data.items);
 
-    if (!res.ok) {
-      throw new Error(data.message);
+    } catch (error) {
+
+      console.error(error.message);
+
     }
-
-    // 🔥 sync frontend with backend
-    setCart(data.items);
-
-  } catch (error) {
-
-    console.error(error.message);
-
-  }
-};
+  };
 
 
 
