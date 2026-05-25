@@ -1,6 +1,7 @@
 import React from 'react'
 import { ArrowRight, Shield, Truck, Zap } from "lucide-react"
 import ProductCard from './ProductCard'
+import { categories } from '../data/products'
 
 
 const Hero = () => {
@@ -54,24 +55,24 @@ const Hero = () => {
 
       {/* Category Section */}
       <div className='bg-[#F7F7F9] h-auto flex flex-col justify-center items-center p-10'>
-
+        
         <h1 className='font-bold text-3xl'>Shop by Category</h1>
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 justify-center mt-6 mb-4'>
-          <div className='box border hover:shadow-lg transition-shadow rounded-lg p-6 py-16'></div>
-          <div className='box border hover:shadow-lg transition-shadow rounded-lg p-6 py-16'></div>
-          <div className='box border hover:shadow-lg transition-shadow rounded-lg p-6 py-16'></div>
-          <div className='box border hover:shadow-lg transition-shadow rounded-lg p-6 py-16'></div>
-          <div className='box border hover:shadow-lg transition-shadow rounded-lg p-6 py-16'></div>
-          <div className='box border hover:shadow-lg transition-shadow rounded-lg p-6 py-16'></div>
-        </div>
 
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 justify-center mt-6 mb-4'>
+          {categories.map((category) => (
+            <div key={category.id} className='box border hover:shadow-lg transition-shadow rounded-lg p-6 py-16'>
+              <span>{category.name}</span>
+            </div>
+          ))}
+  
+        </div>
       </div>
 
 
       {/* products section */}
-      <section className="max-w-7xl mx-auto mt-20 w-full">
-        <div className='flex justify-between'>
-          <h2 className="text-2xl font-bold text-center mb-8">
+      <section className="max-w-[1600px] mx-auto mt-20 px-10 w-full">
+        <div className='flex justify-between items-center mb-10'>
+          <h2 className="text-2xl font-bold ">
             Featured Products
           </h2>
 

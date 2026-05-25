@@ -13,6 +13,7 @@ import { CartProvider } from './context/CartContext'
 import { UIProvider } from './context/UIContext'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
+import OrderSuccess from './pages/OrderSuccess'
 
 
 function App() {
@@ -45,6 +46,14 @@ function App() {
                   <Checkout />
                 </ProtectedRoute>
               } 
+            />
+            <Route 
+              path="/order-success"
+              element={
+                <ProtectedRoute>
+                  <OrderSuccess />
+                </ProtectedRoute>
+              }
             />
           </Routes>
     

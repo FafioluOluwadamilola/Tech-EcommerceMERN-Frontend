@@ -61,13 +61,9 @@ const Checkout = () => {
       }
 
       //Clear frontend cart
-      clearCart();
-
-      //Success message
-      alert("Order placed successfully!");
-
-      //Redirect to orders page
-      navigate("/");
+      await clearCart();
+      
+      navigate("/order-success");
 
 
     } catch (error) {
@@ -180,6 +176,12 @@ const Checkout = () => {
             </div>
 
             {/* Button */}
+            <button
+              onClick={handlePlaceOrder}
+              className="w-full mt-8  bg-black text-white py-4 rounded-xl hover:bg-gray-800"
+            >
+              Place Order 
+            </button>
 
           </div>
 

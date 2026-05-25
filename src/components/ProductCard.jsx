@@ -1,6 +1,6 @@
 import React from 'react'
 import products from '../data/products'
-import { ShoppingCart } from 'lucide-react'
+import { ShoppingCart, Star } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
 import { useUI } from '../context/UIContext'
@@ -12,64 +12,105 @@ const ProductCard = () => {
   const { setShowLogin } = useUI();
 
   const handleAddToCart = (product) => {
-    // If user is not logged in, show login modal
+
+    // If user is not logged in
     if (!user) {
       setShowLogin(true);
       return;
     }
-    //If user is logged in, add product to cart
+
+    // Add to cart
     addToCart(product);
 
-    console.log("Added to Cart", product.name)
+    console.log("Added to Cart", product.name);
 
-  }
+  };
 
   return (
-    <div className='flex justify-center items-center w-full'>
-      
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10'>
 
-        {products.map((product) => (
+    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 w-full'>
 
-          <div
-            key={product.id}
-            className="rounded-2xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full"
-          >
+      {products.slice(0, 8).map((product) => (
 
-            <div className='h-64 bg-red-200 flex items-center justify-center overflow-hidden'>
-              <img
-                src={product.image}
-                alt={product.name}
-                className='w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300'
-              />
+        <div
+          key={product.id}
+          className='group overflow-hidden rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300'
+        >
+
+          {/* Image */}
+          <div className='aspect-square overflow-hidden bg-gray-100'>
+
+            <img
+              src={product.image}
+              alt={product.name}
+              className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer'
+            />
+
+          </div>
+
+          {/* Content */}
+          <div className='p-4'>
+
+            {/* Name + Category */}
+            <div className='flex items-start justify-between gap-2 mb-2'>
+
+              <h1 className='font-semibold text-lg line-clamp-1'>
+                {product.name}
+              </h1>
+
+              <p className='text-xs bg-gray-100 px-2 py-1 rounded-full shrink-0'>
+                {product.category}
+              </p>
+
             </div>
 
-            <div className='p-3 mt-2 flex flex-col grow'>
-              <div className='flex justify-between items-start gap-2'>
-                <h1 className='font-bold text-[17px] cursor-pointer h-12 overflow-hidden text-ellipsis'>{product.name}</h1>
-                <p className='text-xs bg-gray-200 px-2 py-0.5 rounded-full flex items-center justify-center whitespace-nowrap shrink-0'>{product.category}</p>
-              </div>
+            {/* Description */}
+            <p className='text-sm text-gray-500 line-clamp-2 mb-3'>
+              {product.description}
+            </p>
 
-              <p className='text-gray-600 cursor-pointer text-sm h-16 overflow-hidden text-ellipsis mt-2'>{product.description}</p>
-              <p className='mt-2'>⭐{product.ratings} ({product.reviews}) </p>
+            {/* Ratings */}
+            <div className='flex items-center gap-1 mb-4'>
+
+              <Star className='w-4 h-4 fill-yellow-400 text-yellow-400' />
+
+              <span className='text-sm font-medium'>
+                {product.ratings}
+              </span>
+
+              <span className='text-sm text-gray-500'>
+                ({product.reviews})
+              </span>
+
             </div>
 
-            <div className='flex justify-between items-center p-3 '>
-              <p className='font-extrabold text-xl'>${product.price.toFixed(2)}</p>
-              <button 
-                onClick={() =>handleAddToCart(product)} 
-                className='flex gap-3 bg-black text-white py-1.5 px-2 rounded-lg hover:bg-gray-800 transition-colors'>
-                <ShoppingCart />  Add
+            {/* Footer */}
+            <div className='flex items-center justify-between'>
+
+              <p className='text-2xl font-bold'>
+                ${product.price.toFixed(2)}
+              </p>
+
+              <button
+                onClick={() => handleAddToCart(product)}
+                className='flex items-center gap-2 bg-black text-white px-4 py-2 rounded-xl hover:bg-gray-800 transition-colors'
+              >
+
+                <ShoppingCart size={16} />
+                Add
+
               </button>
+
             </div>
 
           </div>
 
-        ))}
+        </div>
 
+      ))}
 
-      </div>
     </div>
+
   )
 }
 
