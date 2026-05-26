@@ -14,6 +14,7 @@ import { UIProvider } from './context/UIContext'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import OrderSuccess from './pages/OrderSuccess'
+import Products from './pages/Products'
 
 
 function App() {
@@ -22,14 +23,15 @@ function App() {
     <UIProvider>
       <CartProvider>
         <BrowserRouter>
-    
+
           <Header />
-    
+
           <Routes>
             <Route path="/" element={<HomePage />} />
             {/* <Route path="/signup" element={<SignUp />} />
             <Route path='/login' element={<Login />} /> */}
             <Route path='/about' element={<About />} />
+            <Route path='/products' element={<Products />} />
             <Route
               path="/profile"
               element={
@@ -39,15 +41,15 @@ function App() {
               }
             />
             <Route path="/cart" element={<Cart />} />
-            <Route 
-              path="/checkout" 
+            <Route
+              path="/checkout"
               element={
                 <ProtectedRoute>
                   <Checkout />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
+            <Route
               path="/order-success"
               element={
                 <ProtectedRoute>
@@ -56,9 +58,9 @@ function App() {
               }
             />
           </Routes>
-    
+
           <Footer />
-    
+
         </BrowserRouter>
       </CartProvider>
     </UIProvider>

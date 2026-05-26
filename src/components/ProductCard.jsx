@@ -1,11 +1,10 @@
 import React from 'react'
-import products from '../data/products'
 import { ShoppingCart, Star } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
 import { useUI } from '../context/UIContext'
 
-const ProductCard = () => {
+const ProductCard = ({ products }) => {
 
   const { addToCart } = useCart();
   const { user } = useAuth();
