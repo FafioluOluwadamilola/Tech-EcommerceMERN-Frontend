@@ -2,6 +2,7 @@ import React from 'react'
 import { ArrowRight, Shield, Truck, Zap } from "lucide-react"
 import ProductCard from './ProductCard'
 import products, { categories } from '../data/products'
+import { Link } from 'react-router-dom'
 
 
 
@@ -55,21 +56,40 @@ const Hero = () => {
 
 
       {/* Category Section */}
-      <div  className='bg-[#F7F7F9] h-auto flex flex-col justify-center items-center p-20'>
-        
-        <h1 className='font-bold text-3xl mb-4'>Shop by Category</h1>
+      <div className='bg-[#F7F7F9] h-auto flex flex-col justify-center items-center p-20'>
+
+        <h1 className='font-bold text-3xl mb-4'>
+          Shop by Category
+        </h1>
 
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 justify-center mt-6 mb-4'>
+
           {categories.map((category) => (
-            <div key={category.id} className='box border hover:shadow-lg transition-shadow rounded-lg p-3 py-5'>
+
+            <Link
+              key={category.id}
+              to={`/products?category=${category.id}`}
+              className='box border hover:shadow-lg hover:-translate-y-1 transition-all rounded-lg p-3 py-5 bg-white'
+            >
+
               <div className='flex flex-col items-center gap-4 text-gray-700 text-md font-medium'>
-                <span className='text-4xl'>{category.icon}</span>
-                <span>{category.name}</span>
+
+                <span className='text-4xl'>
+                  {category.icon}
+                </span>
+
+                <span>
+                  {category.name}
+                </span>
+
               </div>
-            </div>
+
+            </Link>
+
           ))}
-  
+
         </div>
+
       </div>
 
 
@@ -80,10 +100,10 @@ const Hero = () => {
             Featured Products
           </h2>
 
-          <p className='flex gap-1'>View All <ArrowRight /></p>
+          <Link to="/products" className='flex gap-1'>View All <ArrowRight /></Link>
         </div>
 
-        <ProductCard products={products}/>
+        <ProductCard products={products} />
 
       </section>
 

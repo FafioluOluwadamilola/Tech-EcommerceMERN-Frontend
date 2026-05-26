@@ -1,18 +1,23 @@
 import { useState } from "react";
-import products, { categories } from "../data/products";
 import ProductCard from "../components/ProductCard";
+import { useSearchParams } from "react-router-dom";
+import products, { categories } from "../data/products";
 
 const Products = () => {
 
-  const [selectedCategory, setSelectedCategory] = useState("all");
   const [search, setSearch] = useState("");
 
+  const [searchParams] = useSearchParams();
+  const categoryFromURL = searchParams.get("category") || "all";
+  const [selectedCategory, setSelectedCategory] = useState(categoryFromURL);
+
+  
   // Filter products
   const filteredProducts = products.filter((product) => {
 
     const matchesCategory =
       selectedCategory === "all" ||
-      product.category === selectedCategory;
+      product.category.toLocaleLowerCase() === selectedCategory.toLocaleLowerCase();
 
     const matchesSearch =
       product.name.toLowerCase().includes(search.toLowerCase());

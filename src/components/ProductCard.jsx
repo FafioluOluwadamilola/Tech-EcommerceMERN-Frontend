@@ -3,6 +3,7 @@ import { ShoppingCart, Star } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
 import { useUI } from '../context/UIContext'
+import { Link } from 'react-router-dom'
 
 const ProductCard = ({ products }) => {
 
@@ -37,36 +38,42 @@ const ProductCard = ({ products }) => {
         >
 
           {/* Image */}
-          <div className='aspect-square overflow-hidden bg-gray-100'>
+          <Link to={`/products/${product.id}`} >
+            <div className='aspect-square overflow-hidden bg-gray-100'>
 
-            <img
-              src={product.image}
-              alt={product.name}
-              className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer'
-            />
+              <img
+                src={product.image}
+                alt={product.name}
+                className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer'
+              />
 
-          </div>
+            </div>
+          </Link>
 
           {/* Content */}
           <div className='p-4'>
 
             {/* Name + Category */}
-            <div className='flex items-start justify-between gap-2 mb-2'>
-
-              <h1 className='font-semibold text-lg line-clamp-1'>
-                {product.name}
-              </h1>
-
-              <p className='text-xs bg-gray-100 px-2 py-1 rounded-full shrink-0'>
-                {product.category}
+            <Link to={`/products/${product.id}`} className='cursor-pointer'>
+              <div className='flex items-start justify-between gap-2 mb-2'>
+  
+                <h1 className='font-semibold text-lg line-clamp-1'>
+                  {product.name}
+                </h1>
+  
+                <p className='text-xs bg-gray-100 px-2 py-1 rounded-full shrink-0'>
+                  {product.category}
+                </p>
+  
+              </div>
+  
+              {/* Description */}
+              <p className='text-sm text-gray-500 line-clamp-2 mb-3'>
+                {product.description}
               </p>
+  
+            </Link>
 
-            </div>
-
-            {/* Description */}
-            <p className='text-sm text-gray-500 line-clamp-2 mb-3'>
-              {product.description}
-            </p>
 
             {/* Ratings */}
             <div className='flex items-center gap-1 mb-4'>

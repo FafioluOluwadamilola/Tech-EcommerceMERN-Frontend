@@ -15,6 +15,7 @@ import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import OrderSuccess from './pages/OrderSuccess'
 import Products from './pages/Products'
+import ProductDetails from './pages/ProductDetails'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path='/login' element={<Login />} /> */}
             <Route path='/about' element={<About />} />
             <Route path='/products' element={<Products />} />
+            <Route path='/products/:id' element={<ProductDetails />} />
             <Route
               path="/profile"
               element={
