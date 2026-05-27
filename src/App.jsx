@@ -16,6 +16,7 @@ import Checkout from './pages/Checkout'
 import OrderSuccess from './pages/OrderSuccess'
 import Products from './pages/Products'
 import ProductDetails from './pages/ProductDetails'
+import Contact from './pages/Contact'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path='/about' element={<About />} />
             <Route path='/products' element={<Products />} />
             <Route path='/products/:id' element={<ProductDetails />} />
+            <Route path='/contact' element={<Contact />} />
             <Route
               path="/profile"
               element={

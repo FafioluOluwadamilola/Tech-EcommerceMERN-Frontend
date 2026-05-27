@@ -8,30 +8,26 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <div className='max-w-7xl mx-auto bg-white'>
-
-
+    <div className='bg-white'>
 
       {/* Section 1 */}
-      <div className='flex flex-col justify-center items-center h-125 bg-[#F5F6FF] p-4'>
+      <div className='text-center flex flex-col justify-center items-center h-auto md:h-125 bg-[#F5F6FF] p-6'>
 
-        <h1 className='text-[70px] font-bold text-gray-800 mb-4'>Welcome to TechStore</h1>
+        <h1 className='text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-4'>Welcome to TechStore</h1>
 
-        <p className='text-lg text-gray-600 max-w-md text-center'>
+        <p className='text-lg text-gray-600  text-center'>
           Discover the latest smartphones, tablets, audio devices, and accessories. Premium quality, unbeatable prices.
         </p>
 
-        <div className='mt-4 flex  gap-4'>
-          <button className='flex gap-2 bg-black hover:bg-black/80 text-white py-2 px-4 rounded-lg transition-colors'>Shop Now <ArrowRight /> </button>
-          <button className='bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-lg transition-colors'>View Phones</button>
+        <div className='mt-4 flex flex-col gap-4 sm:flex-row'>
+          <Link to='/products' className='flex gap-2 bg-black hover:bg-black/80 text-white py-2 px-4 rounded-lg transition-colors'>Shop Now <ArrowRight /> </Link>
+          <Link to='/products' className='bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-lg transition-colors'>View Phones</Link>
         </div>
       </div>
 
 
-
-
       {/* Section 2 */}
-      <div className='flex justify-evenly h-70 gap-1 p-8 border-b border-white/20 shadow-lg'>
+      <div className='flex flex-col md:flex-row justify-evenly gap-9 p-8 border-b border-white/20 shadow-lg h-auto'>
 
         <div className='flex flex-col items-center justify-center gap-2'>
           <div className='bg-blue-100 p-4 rounded-full text-blue-600'><Zap /></div>
@@ -56,20 +52,20 @@ const Hero = () => {
 
 
       {/* Category Section */}
-      <div className='bg-[#F7F7F9] h-auto flex flex-col justify-center items-center p-20'>
+      <div className='bg-[#F7F7F9] h-auto flex text-center flex-col justify-center items-center p-20 w-full'>
 
         <h1 className='font-bold text-3xl mb-4'>
           Shop by Category
         </h1>
 
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 justify-center mt-6 mb-4'>
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 justify-center mt-6 mb-2'>
 
           {categories.map((category) => (
 
             <Link
               key={category.id}
               to={`/products?category=${category.id}`}
-              className='box border hover:shadow-lg hover:-translate-y-1 transition-all rounded-lg p-3 py-5 bg-white'
+              className='border hover:shadow-lg hover:-translate-y-1 transition-all rounded-2xl p-6 border-gray-300 bg-white'
             >
 
               <div className='flex flex-col items-center gap-4 text-gray-700 text-md font-medium'>
@@ -94,13 +90,13 @@ const Hero = () => {
 
 
       {/* products section */}
-      <section className="max-w-400 mx-auto mt-20 px-10 w-full">
-        <div className='flex justify-between items-center mb-10'>
+      <section className="max-w-7xl mx-auto mt-20 px-10 w-full">
+        <div className='flex  gap-4 md:justify-between items-center mb-10'>
           <h2 className="text-2xl font-bold ">
             Featured Products
           </h2>
 
-          <Link to="/products" className='flex gap-1'>View All <ArrowRight /></Link>
+          <Link to="/products" className='flex'>View All <ArrowRight /></Link>
         </div>
 
         <ProductCard products={products} />

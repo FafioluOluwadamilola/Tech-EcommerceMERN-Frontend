@@ -60,11 +60,8 @@ const Header = () => {
                 </Link>
 
 
-
-
-
                 {/* Desktop Navigation */}
-                <div className='hidden md:flex items-center gap-8'>
+                <div className='hidden md:flex items-center gap-80'>
 
                     {/* Nav Links */}
                     <nav className='flex gap-6'>
@@ -91,9 +88,6 @@ const Header = () => {
                         </Link>
 
                     </nav>
-
-
-
 
 
                     {/* Right Section */}

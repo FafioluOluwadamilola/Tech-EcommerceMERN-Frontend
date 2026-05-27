@@ -11,27 +11,4 @@ body {
   min-height: 100vh;
 }
 
-/* This ensures the gradient covers the whole page */
-html, body, #root {
-  min-height: 100vh;
-}
-
-/* Optional: Add some spacing to your main content */
-main {
-  padding-top: 1rem;
-}
-
-.box{
-  width: 230px;
-  background: #ffffff;
-  border: 2px solid #ccc;
-  cursor: pointer;
-}
-
-.reg{
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
 
