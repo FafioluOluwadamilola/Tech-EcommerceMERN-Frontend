@@ -1,10 +1,9 @@
+import { Facebook, Github, Instagram, Send, Twitter } from 'lucide-react'
 import React from 'react'
-import { Facebook, Twitter, Instagram, Github, Send } from "lucide-react"
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-
     <footer className='bg-black text-white mt-24'>
 
       {/* Top Section */}
@@ -23,7 +22,7 @@ const Footer = () => {
           </p>
 
           {/* Socials */}
-          <div className='flex gap-4 mt-6'>
+          <div className='flex mt-6 gap-4'>
 
             <div className='bg-white/10 p-3 rounded-full hover:bg-white/20 transition cursor-pointer'>
               <Facebook size={18} />
@@ -46,13 +45,11 @@ const Footer = () => {
         </div>
 
 
+        {/* Links */}
 
-
-
-        {/* Quick Links */}
         <div>
 
-          <h2 className='text-xl font-semibold mb-5'>
+          <h2 className='font-semibold text-xl mb-5'>
             Quick Links
           </h2>
 
@@ -77,9 +74,6 @@ const Footer = () => {
           </div>
 
         </div>
-
-
-
 
 
         {/* Categories */}
@@ -108,18 +102,14 @@ const Footer = () => {
             </p>
 
             <p className='hover:text-white transition cursor-pointer'>
-              Powerbanks
+              Power Banks
             </p>
 
           </div>
 
         </div>
 
-
-
-
-
-        {/* Newsletter */}
+        {/* NewsLetter */}
         <div>
 
           <h2 className='text-xl font-semibold mb-5'>
@@ -127,15 +117,14 @@ const Footer = () => {
           </h2>
 
           <p className='text-gray-400 mb-5 leading-7'>
-            Subscribe to receive updates on new arrivals,
-            discounts, and exclusive offers.
+            Subscribe to our newsletter for the latest updates on new products, exclusive offers, and tech news.
           </p>
 
           <div className='flex items-center bg-white/10 rounded-xl overflow-hidden'>
 
             <input
-              type="email"
-              placeholder='Enter your email'
+              type='email'
+              placeholder='Enter your email address'
               className='bg-transparent outline-none px-4 py-3 w-full text-sm'
             />
 
@@ -147,43 +136,40 @@ const Footer = () => {
 
         </div>
 
+
       </div>
 
+        {/* Button */}
+        <div className='border-t border-white/10'>
 
+          <div className='max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400'>
 
-
-
-      {/* Bottom */}
-      <div className='border-t border-white/10'>
-
-        <div className='max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400'>
-
-          <p>
-            © 2026 TechStore. All rights reserved.
-          </p>
-
-          <div className='flex gap-6'>
-
-            <p className='hover:text-white transition cursor-pointer'>
-              Privacy Policy
+            <p>
+              &copy; {new Date().getFullYear()} TechStore. All rights reserved.
             </p>
 
-            <p className='hover:text-white transition cursor-pointer'>
-              Terms of Service
-            </p>
+            <div className='flex gap-6'>
 
-            <p className='hover:text-white transition cursor-pointer'>
-              Contact
-            </p>
+              <p className='hover:text-white transition cursor-pointer'>
+                Privacy Policy
+              </p>
+
+              <p className='hover:text-white transition cursor-pointer'>
+                Terms of Service
+              </p>
+
+              <p className='hover:text-white transition cursor-pointer'>
+                Contact
+              </p>
+
+            </div>
 
           </div>
 
+
         </div>
 
-      </div>
-
     </footer>
-
   )
 }
 

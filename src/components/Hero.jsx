@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <div className='w-full bg-white'>
+    <div className='max-w-7xl mx-auto bg-white'>
 
 
 
