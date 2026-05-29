@@ -17,6 +17,7 @@ import OrderSuccess from './pages/OrderSuccess'
 import Products from './pages/Products'
 import ProductDetails from './pages/ProductDetails'
 import Contact from './pages/Contact'
+import MyOrders from './pages/MyOrders'
 
 
 function App() {
@@ -58,6 +59,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <OrderSuccess />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/my-orders"
+              element={
+                <ProtectedRoute>
+                  <MyOrders />
                 </ProtectedRoute>
               }
             />

@@ -11,4 +11,9 @@ body {
   min-height: 100vh;
 }
 
-
+.reg{
+  display: flex;
+  padding: 10px;
+  justify-content: left;
+  flex-direction: column;
+}
