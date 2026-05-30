@@ -18,6 +18,7 @@ import Products from './pages/Products'
 import ProductDetails from './pages/ProductDetails'
 import Contact from './pages/Contact'
 import MyOrders from './pages/MyOrders'
+import OrderDetails from './pages/OrderDetails'
 
 
 function App() {
@@ -63,10 +64,18 @@ function App() {
               }
             />
             <Route 
-              path="/my-orders"
+              path="/orders"
               element={
                 <ProtectedRoute>
                   <MyOrders />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path='/orders/:id'
+              element={
+                <ProtectedRoute>
+                  <OrderDetails />
                 </ProtectedRoute>
               }
             />

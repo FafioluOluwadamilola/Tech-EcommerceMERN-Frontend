@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MyOrders = () => {
 
@@ -54,9 +55,10 @@ const MyOrders = () => {
 
           {orders.map((order) => (
 
-            <div
+            <Link
+              to={`/orders/${order._id}`}
               key={order._id}
-              className="border rounded-2xl p-6 shadow-sm"
+              className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition-block" 
             >
 
               <div className="flex justify-between mb-4">
@@ -112,7 +114,7 @@ const MyOrders = () => {
 
               </div>
 
-            </div>
+            </Link>
 
           ))}
 
