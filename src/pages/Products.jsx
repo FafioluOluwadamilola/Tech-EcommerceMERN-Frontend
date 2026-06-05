@@ -6,6 +6,7 @@ import products, { categories } from "../data/products";
 const Products = () => {
 
   const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("default")  
 
   const [searchParams] = useSearchParams();
   const categoryFromURL = searchParams.get("category") || "all";
@@ -23,7 +24,29 @@ const Products = () => {
       product.name.toLowerCase().includes(search.toLowerCase());
 
     return matchesCategory && matchesSearch;
-  });
+  })
+  .sort((a, b) => {
+
+    switch(sortBy) {
+      
+      case "low-high":
+        return a.price - b.price;
+
+      case "high-low":
+        return b.price - a.price;
+
+      case "ratings":
+        return b.ratings - a.ratings;
+      
+      case "name":
+        return a.name.localeCompare(b.name);
+
+      default:
+        return 0;
+
+
+    }
+  })
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 min-h-screen">
@@ -51,6 +74,40 @@ const Products = () => {
           onChange={(e) => setSearch(e.target.value)}
           className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black"
         />
+
+      </div>
+
+
+      <div className="mb-8 flex justify-end">
+
+        <select 
+          value={setSortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="border rounded-xl px-4 py-3 outline-none"
+        >
+
+          <option value="default">
+            Sort By
+          </option>
+
+          <option value="low-high">
+            Price: Low to High
+          </option>
+
+          <option value="high-low">
+            Price: High to Low
+          </option>
+
+          <option value="ratings">
+            Ratings
+          </option>
+
+          <option value="name">
+            Name
+          </option> 
+
+        </select>
+
 
       </div>
 
