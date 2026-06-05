@@ -1,15 +1,17 @@
 import React from 'react'
-import { ShoppingCart, Star } from 'lucide-react'
+import { Heart, ShoppingCart, Star } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
 import { useUI } from '../context/UIContext'
 import { Link } from 'react-router-dom'
+import { useWishlist } from '../context/WishlistContext'
 
 const ProductCard = ({ products }) => {
 
   const { addToCart } = useCart();
   const { user } = useAuth();
   const { setShowLogin } = useUI();
+  const { addToWishlist, isInWishlist, removeFromWishlist } = useWishlist();
 
   const handleAddToCart = (product) => {
 
@@ -30,7 +32,7 @@ const ProductCard = ({ products }) => {
 
     <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 w-full'>
 
-      {products.slice(0, 8).map((product) => (
+      {products.map((product) => (
 
         <div
           key={product.id}
@@ -38,17 +40,35 @@ const ProductCard = ({ products }) => {
         >
 
           {/* Image */}
-          <Link to={`/products/${product.id}`} >
-            <div className='aspect-square overflow-hidden bg-gray-100'>
+          <div className='aspect-square overflow-hidden bg-gray-100 relative'>
 
+            <Link to={`/products/${product.id}`} >
               <img
                 src={product.image}
                 alt={product.name}
                 className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer'
               />
+            </Link>
 
-            </div>
-          </Link>
+            <button
+              onClick={() =>
+                isInWishlist(product.id) ? removeFromWishlist(product.id) : addToWishlist(product)
+              }
+              className='absolute top-3 right-3 bg-white p-2 rounded-full shadow'
+
+            >
+
+              <Heart
+                size={18}
+                className={
+                  isInWishlist(product.id) ? "fill-red-600 text-red-500" : "text-gray-500"
+                }
+              />
+
+            </button>
+
+          </div>
+
 
           {/* Content */}
           <div className='p-4'>
@@ -56,22 +76,22 @@ const ProductCard = ({ products }) => {
             {/* Name + Category */}
             <Link to={`/products/${product.id}`} className='cursor-pointer'>
               <div className='flex items-start justify-between gap-2 mb-2'>
-  
+
                 <h1 className='font-semibold text-lg line-clamp-1'>
                   {product.name}
                 </h1>
-  
+
                 <p className='text-xs bg-gray-100 px-2 py-1 rounded-full shrink-0'>
                   {product.category}
                 </p>
-  
+
               </div>
-  
+
               {/* Description */}
               <p className='text-sm text-gray-500 line-clamp-2 mb-3'>
                 {product.description}
               </p>
-  
+
             </Link>
 
 

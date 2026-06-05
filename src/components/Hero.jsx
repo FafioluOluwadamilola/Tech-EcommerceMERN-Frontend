@@ -99,7 +99,7 @@ const Hero = () => {
           <Link to="/products" className='flex'>View All <ArrowRight /></Link>
         </div>
 
-        <ProductCard products={products} />
+        <ProductCard products={products.slice(0, 8)} />
 
       </section>
 

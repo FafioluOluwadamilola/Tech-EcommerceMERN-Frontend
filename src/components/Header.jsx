@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ShoppingCart, User, Menu, X } from 'lucide-react'
+import { ShoppingCart, User, Menu, X, Heart } from 'lucide-react'
 import { useState } from 'react'
 
 import SignUp from '../pages/SignUp'
@@ -161,6 +161,12 @@ const Header = () => {
 
                             )}
 
+                        </Link>
+
+
+                        {/* WishList */}
+                        <Link to="/wishlist">
+                            <Heart size={26} className='text-gray-800' />
                         </Link>
 
                     </div>
