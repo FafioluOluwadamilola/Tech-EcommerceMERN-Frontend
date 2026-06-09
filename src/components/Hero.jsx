@@ -89,7 +89,13 @@ const Hero = () => {
       </div>
 
 
+      <div className="bg-white dark:bg-gray-900 text-black dark:text-white p-4">
+        This box changes with your system dark mode
+      </div>
+
+
       {/* products section */}
+
       <section className="max-w-7xl mx-auto mt-20 px-10 w-full">
         <div className='flex  gap-4 md:justify-between items-center mb-10'>
           <h2 className="text-2xl font-bold ">

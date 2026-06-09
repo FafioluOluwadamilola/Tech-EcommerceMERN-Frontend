@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ShoppingCart, User, Menu, X, Heart } from 'lucide-react'
+import { ShoppingCart, User, Menu, X, Heart, Moon, Sun } from 'lucide-react'
 import { useState } from 'react'
 
 import SignUp from '../pages/SignUp'
@@ -8,10 +8,17 @@ import Login from '../pages/Login'
 import { useAuth } from '../context/AuthContext'
 import { useCart } from '../context/CartContext'
 import { useUI } from '../context/UIContext'
+import { useWishlist } from '../context/WishlistContext'
+import { useTheme } from '../context/ThemeContext'
+
 
 const Header = () => {
 
     const [mobileMenu, setMobileMenu] = useState(false)
+
+    const { theme, toggleTheme } = useTheme()
+
+    const { wishlist } = useWishlist();
 
     const {
         showLogin,
@@ -101,12 +108,12 @@ const Header = () => {
                                     Welcome, {user.name}
                                 </span>
 
-                                <Link 
+                                <Link
                                     to="/orders"
                                     className='px-3 py-1.5 bg-gray-200 rounded-lg hover:bg-gray-300 transition cursor-pointer'
                                 >
                                     My Orders
-                                
+
                                 </Link>
 
                                 <button
@@ -165,12 +172,31 @@ const Header = () => {
 
 
                         {/* WishList */}
-                        <Link to="/wishlist">
+                        <Link to="/wishlist" className='relative'>
                             <Heart size={26} className='text-gray-800' />
+
+                            {wishlist.length > 0 && (
+
+                                <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center'>
+                                    {wishlist.length}
+                                </span>
+                            )}
+
                         </Link>
+
+
+                        {/* Theme Toggle */}
+                        <button onClick={toggleTheme} className='p-2 rounded-lg hover:bg-gray-200 transition'>
+                            {theme === "light" ? (
+                                <Sun size={26} className='text-gray-800' />
+                            ) : (
+                                <Moon size={26} className='text-gray-800' />
+                            )}
+                        </button>
 
                     </div>
 
+                    
                 </div>
 
 
@@ -200,8 +226,25 @@ const Header = () => {
 
                     </Link>
 
+                    {/* Toggle Theme */}
+                    <button onClick={toggleTheme} className='p-2 rounded-lg hover:bg-gray-200 transition'>
+                        {theme === "light" ? (
+                            <Sun size={26} className='text-gray-800' /> 
+                        ) : (
+                            <Moon size={26} className='text-gray-800' />
+                        )}
+                    </button>
 
 
+                    <Link to="/wishlist" className='relative'>
+                        <Heart size={26} className='text-gray-800' />
+
+                        {wishlist.length > 0 && (
+                            <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center'>
+                                {wishlist.length}
+                            </span>
+                        )}
+                    </Link>
 
 
                     {/* Menu Button */}
