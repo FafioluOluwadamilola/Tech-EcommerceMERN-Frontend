@@ -3,18 +3,18 @@ import { Mail, MapPin, Phone, Clock } from "lucide-react";
 const Contact = () => {
   return (
 
-    <div className="bg-[#F7F7F9] min-h-screen py-14 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#F7F7F9] dark:bg-slate-950 min-h-screen py-14 px-4 sm:px-6 lg:px-8">
 
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
         <div className="text-center mb-14">
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Contact Us
           </h1>
 
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+          <p className="text-gray-600 dark:text-gray-200 max-w-2xl mx-auto text-sm md:text-base">
             Have questions about our products, orders, or services?
             Our support team is always ready to help you.
           </p>
@@ -25,13 +25,13 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
           {/* Left Side */}
-          <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-gray-200 dark:border-slate-600">
 
             <h2 className="text-2xl font-bold mb-8">
               Get In Touch
             </h2>
 
-            <div className="space-y-7">
+            <div className="space-y-7 dark:text-gray-100">
 
               {/* Email */}
               <div className="flex items-start gap-4">
@@ -39,7 +39,7 @@ const Contact = () => {
                 <div className="bg-blue-100 text-blue-600 p-3 rounded-2xl">
                   <Mail />
                 </div>
-
+    
                 <div>
                   <h3 className="font-semibold text-lg">
                     Email
@@ -114,7 +114,7 @@ const Contact = () => {
           </div>
 
           {/* Right Side */}
-          <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-gray-200 dark:border-slate-600">
 
             <h2 className="text-2xl font-bold mb-8">
               Send Us a Message
@@ -125,14 +125,14 @@ const Contact = () => {
               {/* Name */}
               <div>
 
-                <label className="block mb-2 font-medium text-gray-700">
+                <label className="block mb-2 font-medium text-gray-700 dark:text-gray-300">
                   Full Name
                 </label>
 
                 <input
                   type="text"
                   placeholder="Enter your full name"
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black"
+                  className="w-full border border-gray-300 dark:border-slate-600 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black dark:bg-slate-800 dark:text-white"
                 />
 
               </div>
@@ -140,14 +140,14 @@ const Contact = () => {
               {/* Email */}
               <div>
 
-                <label className="block mb-2 font-medium text-gray-700">
+                <label className="block mb-2 font-medium text-gray-700 dark:text-gray-300">
                   Email Address
                 </label>
 
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black dark:border-slate-600 dark:bg-slate-800 dark:text-white"
                 />
 
               </div>
@@ -155,14 +155,14 @@ const Contact = () => {
               {/* Subject */}
               <div>
 
-                <label className="block mb-2 font-medium text-gray-700">
+                <label className="block mb-2 font-medium text-gray-700 dark:text-gray-300">
                   Subject
                 </label>
 
                 <input
                   type="text"
                   placeholder="Message subject"
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black dark:border-slate-600 dark:bg-slate-800 dark:text-white  "
                 />
 
               </div>
@@ -170,7 +170,7 @@ const Contact = () => {
               {/* Message */}
               <div>
 
-                <label className="block mb-2 font-medium text-gray-700">
+                <label className="block mb-2 font-medium text-gray-700 dark:text-gray-300">
                   Message
                 </label>
 

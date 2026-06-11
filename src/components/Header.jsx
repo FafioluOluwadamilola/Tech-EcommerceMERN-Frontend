@@ -44,7 +44,7 @@ const Header = () => {
 
     return (
 
-        <header className='sticky top-0 z-50 bg-white/40 backdrop-blur-lg border-b border-white/20 shadow-sm'>
+        <header className='sticky top-0 z-50 bg-white/40 dark:bg-slate-950 text-gray-800 dark:text-slate-100 backdrop-blur-lg border-b border-white/20 shadow-sm'>
 
             <div className='max-w-7xl mx-auto px-6 py-4 flex items-center justify-between'>
 
@@ -54,13 +54,13 @@ const Header = () => {
                     className='flex items-center gap-2'
                 >
 
-                    <div className='bg-linear-to-r from-blue-500 to-purple-500 rounded-lg p-1'>
+                    <div className='bg-linear-to-r from-blue-500 to-purple-500 rounded-lg p-1 bg-linear-to-r dark:from-pink-500 dark:to-yellow-500 '>
 
                         <ShoppingCart className='text-white size-5' />
 
                     </div>
 
-                    <h1 className='text-[20px] font-bold text-gray-800'>
+                    <h1 className='text-[20px] font-bold '>
                         TechStore
                     </h1>
 
@@ -75,21 +75,21 @@ const Header = () => {
 
                         <Link
                             to="/"
-                            className='text-gray-800 hover:text-black transition'
+                            className=' hover:text-slate-500 transition'
                         >
                             Home
                         </Link>
 
                         <Link
                             to="/products"
-                            className='text-gray-800 hover:text-black transition'
+                            className=' hover:text-slate-500 transition'
                         >
                             Products
                         </Link>
 
                         <Link
                             to="/contact"
-                            className='text-gray-800 hover:text-black transition'
+                            className=' hover:text-slate-500 transition'
                         >
                             Contact
                         </Link>
@@ -104,13 +104,13 @@ const Header = () => {
 
                             <div className='flex items-center gap-3'>
 
-                                <span className='hidden lg:block text-gray-800 font-medium'>
+                                <span className='hidden lg:block text-gray-800 dark:text-slate-100 font-medium'>
                                     Welcome, {user.name}
                                 </span>
 
                                 <Link
                                     to="/orders"
-                                    className='px-3 py-1.5 bg-gray-200 rounded-lg hover:bg-gray-300 transition cursor-pointer'
+                                    className='px-3 py-1.5 bg-gray-200 rounded-lg hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 transition cursor-pointer'
                                 >
                                     My Orders
 
@@ -118,7 +118,7 @@ const Header = () => {
 
                                 <button
                                     onClick={handleLogout}
-                                    className='px-3 py-1.5 bg-gray-200 rounded-lg hover:bg-gray-300 transition cursor-pointer'
+                                    className='px-3 py-1.5 bg-gray-200 rounded-lg hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 transition cursor-pointer'
                                 >
                                     Logout
                                 </button>
@@ -131,7 +131,7 @@ const Header = () => {
 
                                 <button
                                     onClick={() => setShowLogin(true)}
-                                    className='flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-200 transition cursor-pointer'
+                                    className='flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition cursor-pointer'
                                 >
 
                                     <User size={18} />
@@ -141,7 +141,7 @@ const Header = () => {
 
                                 <button
                                     onClick={() => setShowSignUp(true)}
-                                    className='bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition cursor-pointer'
+                                    className='bg-slate-950 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition cursor-pointer'
                                 >
                                     Sign Up
                                 </button>
@@ -155,7 +155,7 @@ const Header = () => {
 
                             <ShoppingCart
                                 size={26}
-                                className='text-gray-800'
+                                className='text-gray-800 dark:text-slate-100'
                             />
 
                             {totalItems > 0 && (
@@ -173,7 +173,7 @@ const Header = () => {
 
                         {/* WishList */}
                         <Link to="/wishlist" className='relative'>
-                            <Heart size={26} className='text-gray-800' />
+                            <Heart size={26} className='text-gray-800 dark:text-slate-100' />
 
                             {wishlist.length > 0 && (
 
@@ -186,11 +186,11 @@ const Header = () => {
 
 
                         {/* Theme Toggle */}
-                        <button onClick={toggleTheme} className='p-2 rounded-lg hover:bg-gray-200 transition'>
+                        <button onClick={toggleTheme} className='p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition'>
                             {theme === "light" ? (
-                                <Sun size={26} className='text-gray-800' />
+                                <Moon size={26} className='text-gray-800 dark:text-slate-100' />
                             ) : (
-                                <Moon size={26} className='text-gray-800' />
+                                <Sun size={26} className='text-gray-800 dark:text-slate-100' />
                             )}
                         </button>
 
@@ -209,9 +209,8 @@ const Header = () => {
                     {/* Mobile Cart */}
                     <Link to="/cart" className='relative'>
 
-                        <ShoppingCart
-                            size={26}
-                            className='text-gray-800'
+                        <ShoppingCart size={26}
+                            className='text-gray-800 dark:text-slate-100'
                         />
 
                         {totalItems > 0 && (
@@ -227,17 +226,17 @@ const Header = () => {
                     </Link>
 
                     {/* Toggle Theme */}
-                    <button onClick={toggleTheme} className='p-2 rounded-lg hover:bg-gray-200 transition'>
+                    <button onClick={toggleTheme} className='p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition'>
                         {theme === "light" ? (
-                            <Sun size={26} className='text-gray-800' /> 
+                            <Sun size={26} className='text-gray-800 dark:text-slate-100' /> 
                         ) : (
-                            <Moon size={26} className='text-gray-800' />
+                            <Moon size={26} className='text-gray-800 dark:text-slate-100' />
                         )}
                     </button>
 
 
                     <Link to="/wishlist" className='relative'>
-                        <Heart size={26} className='text-gray-800' />
+                        <Heart size={26} className='text-gray-800 dark:text-slate-100' />
 
                         {wishlist.length > 0 && (
                             <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center'>
@@ -271,13 +270,13 @@ const Header = () => {
             {/* Mobile Dropdown */}
             {mobileMenu && (
 
-                <div className='md:hidden bg-white border-t border-gray-200 px-6 py-6 flex flex-col gap-5 shadow-lg'>
+                <div className='md:hidden bg-white dark:bg-slate-950 border-t border-gray-200 dark:border-slate-600 px-6 py-6 flex flex-col gap-5 shadow-lg'>
 
                     {/* Links */}
                     <Link
                         to="/"
                         onClick={() => setMobileMenu(false)}
-                        className='text-gray-800'
+                        className='text-gray-800 dark:text-slate-100'
                     >
                         Home
                     </Link>
@@ -285,7 +284,7 @@ const Header = () => {
                     <Link
                         to="/products"
                         onClick={() => setMobileMenu(false)}
-                        className='text-gray-800'
+                        className='text-gray-800 dark:text-slate-100'
                     >
                         Products
                     </Link>
@@ -293,7 +292,7 @@ const Header = () => {
                     <Link
                         to="/contact"
                         onClick={() => setMobileMenu(false)}
-                        className='text-gray-800'
+                        className='text-gray-800 dark:text-slate-100'
                     >
                         Contact
                     </Link>
@@ -307,13 +306,13 @@ const Header = () => {
 
                         <>
 
-                            <p className='font-medium'>
+                            <p className='font-medium dark:text-slate-100'>
                                 Welcome, {user.name}
                             </p>
 
                             <button
                                 onClick={handleLogout}
-                                className='bg-gray-200 py-2 rounded-lg'
+                                className='bg-gray-200 py-2 rounded-lg dark:bg-gray-700 transition'
                             >
                                 Logout
                             </button>

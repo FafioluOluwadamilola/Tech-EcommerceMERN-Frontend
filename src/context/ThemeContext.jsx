@@ -5,25 +5,47 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
 
-    const [theme, setTheme] = useState("light")
+    const [theme, setTheme] = useState(() => {
+        //Check localStorage for saved theme
+        const savedTheme = localStorage.getItem("theme")
 
-    useEffect(() => {
-        if(theme === "dark") {
-            document.documentElement.classList.add("dark")
+        if (savedTheme) {
+            return savedTheme
         } else {
-            document.documentElement.classList.remove("dark")
+            // If no saved theme, check system preference
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+            return prefersDark ? "dark" : "light"
         }
-    }, [theme])
+    })
 
-    
     const toggleTheme = () => {
-        if(theme === "light") {
+        if (theme === "light") {
             setTheme("dark")
         } else {
             setTheme("light")
         }
-    }    
-    
+    }
+
+    useEffect(() => {
+
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark")
+        } else {
+            document.documentElement.classList.remove("dark")
+        }
+
+
+        // Save theme to localStorage whenever it changes
+        localStorage.setItem("theme", theme)
+
+    }, [theme])
+
+
+
+
+
+
+
     return (
         <ThemeContext.Provider
             value={{
@@ -37,4 +59,4 @@ export const ThemeProvider = ({ children }) => {
 }
 
 
-export const useTheme= () => useContext(ThemeContext)
+export const useTheme = () => useContext(ThemeContext)
